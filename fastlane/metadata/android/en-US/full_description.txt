@@ -2,7 +2,7 @@ With this plugin you can make GUI applications in <a href="https://f-droid.org/e
 This plugin uses the native Android GUI components to display everything.
 That means it seamlessly integrates into the Android experience, but standard applications written for X11 don't work.
 Also it requires a minimum of knowledge of how the Android GUI works.
-See <a href="https://github.com/termux/termux-gui/blob/main/README.md">the README</a> for a crash course.
+See <a href="https://github.com/ShiroiKuma0/shiroikuma-termux-gui/blob/custom/README.md">the README</a> for a crash course.
 
 Features:
 * Display content in a task with its own back stack

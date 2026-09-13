@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Termux:GUI</string>
+    <string name="app_name">白い熊 Termux GUI</string>
     <string name="widget_description">A widget that can be freely resized and whose contents can be controlled by programs in Termux.</string>
     <string name="widget_id">Widget id</string>
     <string name="widget_id_copied">Widget id copied to clipboard</string>
@@ -8,7 +8,7 @@
     <string name="close">Close</string>
     <string name="widget_default_text">Use a program to fill this widget</string>
     <string name="overlay_settings">Please enable overlays in the app permissions.</string>
-    <string name="app_settings">Termux:GUI Settings</string>
+    <string name="app_settings">白い熊 Termux GUI Settings</string>
     <string name="settings_service">These settings are for the foreground service with the notification and only apply once it restarts.\nIf you want to apply these settings now, click the button to kill the service. That will also disconnect all programs using the plugin at the moment.</string>
     <string name="service_restart">Restart service</string>
     <string name="setting_service_timeout">How many seconds the service stays active when there are no connections. If a program wants to connect and the service is still active, the startup time is shorter. A negative value means the service is never shut down automatically.</string>

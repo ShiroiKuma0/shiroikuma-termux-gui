@@ -52,7 +52,7 @@ class GUIService : Service() {
                             .setName("Service").setLightsEnabled(false).setVibrationEnabled(false).build())
             val b = NotificationCompat.Builder(this, "service")
             b.setSmallIcon(R.drawable.ic_service_notification)
-            b.setContentTitle("Termux:GUI")
+            b.setContentTitle(getString(R.string.app_name))
             b.setOnlyAlertOnce(true)
             b.setOngoing(true)
             b.setShowWhen(false)

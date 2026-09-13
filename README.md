@@ -1,6 +1,24 @@
+<div align="center">
+
+<img src="app/src/main/ic_launcher-playstore.png" width="120" alt="白い熊 Termux GUI icon" />
+
+# 白い熊 Termux GUI
+
+</div>
+
+**白い熊's fork of [Termux:GUI](https://github.com/termux/termux-gui)**, the Termux plugin that lets
+command-line programs draw native Android UI. The app id stays **`com.termux.gui`** on purpose — every
+tgui client library and the `com.termux` shared UID depend on it — so this build **upgrades stock
+Termux:GUI in place** and is signed with the one key of the whole 白い熊 com.termux family
+(白い熊 Termux, Termux API, Termux X11, Termux GUI, Emacs). What changes: the label, the black-yellow
+traced icon, the links, and later the 白い熊 Termux GUI page. Not on F-Droid — the APKs are on
+**[our releases page](https://github.com/ShiroiKuma0/shiroikuma-termux-gui/releases)**.
+
+---
+
 # Termux:GUI
 
-[<img src="https://img.shields.io/github/v/release/termux/termux-gui?include_prereleases"/>](https://github.com/termux/termux-gui/releases)
+[<img src="https://img.shields.io/github/v/release/ShiroiKuma0/shiroikuma-termux-gui?include_prereleases"/>](https://github.com/ShiroiKuma0/shiroikuma-termux-gui/releases)
 [<img src="https://img.shields.io/f-droid/v/com.termux.gui"/>](https://f-droid.org/de/packages/com.termux.gui/)
 
 

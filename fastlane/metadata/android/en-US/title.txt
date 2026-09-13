@@ -1,1 +1,1 @@
-Termux:GUI
+白い熊 Termux GUI

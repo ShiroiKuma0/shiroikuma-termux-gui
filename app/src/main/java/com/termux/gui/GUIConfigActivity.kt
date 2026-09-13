@@ -78,7 +78,7 @@ class GUIConfigActivity : AppCompatActivity() {
         }
 
         b!!.logcat.setOnClickListener {
-            open.launch("Termux:GUI logcat")
+            open.launch(getString(R.string.app_name) + " logcat")
         }
         setContentView(b!!.root)
     }

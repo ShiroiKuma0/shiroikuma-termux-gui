@@ -232,7 +232,7 @@ class HandleRemote {
                             }
                         }
                         if (a == null) {
-                            Toast.makeText(app, "Please grant Termux:GUI the notification permission", Toast.LENGTH_LONG).show()
+                            Toast.makeText(app, "Please grant " + app.getString(R.string.app_name) + " the notification permission", Toast.LENGTH_LONG).show()
                         } else {
                             try {
                                 a.requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 0)

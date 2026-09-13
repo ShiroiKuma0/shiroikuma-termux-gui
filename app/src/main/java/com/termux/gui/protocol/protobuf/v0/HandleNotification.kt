@@ -61,7 +61,7 @@ class HandleNotification(val main: OutputStream, val remoteviews: MutableMap<Int
                         }
                     }
                     if (a == null) {
-                        Toast.makeText(app, "Please grant Termux:GUI the notification permission", Toast.LENGTH_LONG).show()
+                        Toast.makeText(app, "Please grant " + app.getString(R.string.app_name) + " the notification permission", Toast.LENGTH_LONG).show()
                     } else {
                         a.requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 0)
                     }
