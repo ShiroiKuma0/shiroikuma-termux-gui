@@ -156,3 +156,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
+
+// shiroikuma-termux-gui fork: version pin, release signing and buildFork live in shiroikuma.gradle.
+// Applied LAST so upstream's whole android { } block above is already evaluated and only READ there.
+apply from: 'shiroikuma.gradle'

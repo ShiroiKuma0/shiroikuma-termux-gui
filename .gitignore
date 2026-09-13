@@ -20,3 +20,14 @@ local.properties
 /app/debugMinify/
 /examples/code/
 /.kotlin
+
+### shiroikuma-termux-gui fork ###
+# Release signing: the credentials and the key itself never enter git. (Upstream's tracked
+# app/dev_keystore.jks is its DEBUG key and stays tracked — a pattern does not untrack it.)
+/keystore.properties
+*.jks
+# Agent config is committed (CLAUDE.md, .claude/skills/); only the machine-local settings are not.
+/.claude/settings.local.json
+# Agent working files: generator scripts, intermediate data, throwaway exports.
+/.scratch/
+# `local.properties` (sdk.dir) is already covered by upstream's rules above.
