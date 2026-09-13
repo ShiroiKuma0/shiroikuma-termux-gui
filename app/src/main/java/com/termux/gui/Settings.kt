@@ -48,9 +48,13 @@ class Settings private constructor() {
 
     /**
      * Get the encrypted shared preferences for the settings.
+     *
+     * shiroikuma-termux-gui fork: `internal` (was `private`) so the Export / Import core
+     * (`shiroikuma/TermuxGuiExport.kt`) dumps and restores THIS handle — same file, same keyset —
+     * rather than opening a copy that could drift from it on a rebase.
      */
     @Suppress("DEPRECATION")
-    private fun settingsPreferences(c: Context): EncryptedSharedPreferences? {
+    internal fun settingsPreferences(c: Context): EncryptedSharedPreferences? {
         return try {
             val m = MasterKey.Builder(c).setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build()
             EncryptedSharedPreferences.create(c, 

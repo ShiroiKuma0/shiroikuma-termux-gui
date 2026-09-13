@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.NotificationManagerCompat
 import com.termux.gui.databinding.ActivityGuiConfigBinding
+import com.termux.gui.shiroikuma.ShiroikumaEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -81,6 +82,7 @@ class GUIConfigActivity : AppCompatActivity() {
             open.launch(getString(R.string.app_name) + " logcat")
         }
         setContentView(b!!.root)
+        ShiroikumaEntry.install(this) // shiroikuma-termux-gui fork: the 白い熊 UI page's row + title long-press
     }
 
 

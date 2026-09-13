@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- shiroikuma-termux-gui fork: the launcher long-press shortcut to the 白い熊 Termux GUI UI page.
+     Static shortcuts exist from API 25; on 24 (minSdk) the meta-data is simply ignored. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="n_mr1">
+    <shortcut
+        android:shortcutId="shiroikuma_ui"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shiroikuma_ui_shortcut_short"
+        android:shortcutLongLabel="@string/shiroikuma_ui_shortcut_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.termux.gui"
+            android:targetClass="com.termux.gui.shiroikuma.ShiroikumaUiActivity" />
+    </shortcut>
+</shortcuts>

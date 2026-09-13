@@ -112,6 +112,16 @@ if (forkSigned) {
     android.buildTypes.release.signingConfig = android.signingConfigs.release
 }
 
+// --- fork dependencies -----------------------------------------------------------------------------
+// The 白い熊 UI page's Export / Import keeps its directory as a SAF tree (this app cannot hold
+// MANAGE_EXTERNAL_STORAGE) and walks it with DocumentFile. documentfile 1.0.0 is already reachable
+// transitively (legacy-support-v4 → legacy-support-core-utils); declared here so the page does not
+// rest on that. Declared HERE rather than in build.gradle so upstream's dependencies block stays
+// byte-identical across rebases.
+dependencies {
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+}
+
 // --- buildFork ---------------------------------------------------------------------------------
 // Build the signed release APK, copy it to ~/tmp under the house filename, then bump BUILD_NUMBER
 // and record the code just shipped. See .claude/skills/build-apk/SKILL.md.

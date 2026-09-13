@@ -17,6 +17,17 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Used on Android 13 for the foreground service notification. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- shiroikuma-termux-gui fork: the 保存復元 automation's dataSync foreground services
+         (StateExportService, AutomationDataService) — required at targetSdk 34. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <!-- shiroikuma-termux-gui fork: without these, the reply broadcasts' setPackage() to the two
+         automation callers fail SILENTLY on Android 11+ (sister-app contract v2 §2a). -->
+    <queries>
+        <package android:name="shiroikuma.oyokanri" />
+        <package android:name="shiroikuma.jiyusagyoban" />
+    </queries>
     
     <application
         android:name=".App"
@@ -33,6 +44,10 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- shiroikuma-termux-gui fork: launcher long-press → the 白い熊 Termux GUI UI page. -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
         <receiver
@@ -105,6 +120,53 @@
         <meta-data
             android:name="android.webkit.WebView.MetricsOptOut"
             android:value="true" />
+
+        <!-- ===== shiroikuma-termux-gui fork: the 白い熊 Termux GUI UI page, Export / Import, and the
+             sister-app backup-automation contract v2 (自由作業盤 保存復元 / 応用管理). Additive; every
+             component lives under com.termux.gui.shiroikuma. ===== -->
+
+        <!-- The page. Exported so the static launcher shortcut (a different process) can start it. -->
+        <activity
+            android:name=".shiroikuma.ShiroikumaUiActivity"
+            android:label="@string/shiroikuma_ui_title"
+            android:exported="true" />
+
+        <!-- §1: EXPORT_STATE / LIST_CATEGORIES / CANCEL_EXPORT. Deliberately no permission: the
+             gate is the switch + optional token; this half only ever writes where it is told to. -->
+        <receiver
+            android:name=".shiroikuma.automation.StateExportReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name="${applicationId}.action.EXPORT_STATE" />
+                <action android:name="${applicationId}.action.LIST_CATEGORIES" />
+                <action android:name="${applicationId}.action.CANCEL_EXPORT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- §2a: the data door — describe / export / import / cancel via call(), caller verified
+             by exact name + uid + pinned signing certificate (AutomationCallers). -->
+        <provider
+            android:name=".shiroikuma.automation.AutomationProvider"
+            android:authorities="${applicationId}.automation"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <!-- Where the two doors' work runs, off the broadcast / binder windows. -->
+        <service
+            android:name=".shiroikuma.automation.StateExportService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        <service
+            android:name=".shiroikuma.automation.AutomationDataService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Capability discovery, readable by 応用管理 without waking (or thawing) this app.
+             INTEGERS — the reader uses getInt. -->
+        <meta-data android:name="shiroikuma.automation.contract" android:value="2" />
+        <meta-data android:name="shiroikuma.automation.format" android:value="1" />
+        <meta-data android:name="shiroikuma.automation.min_format" android:value="1" />
     </application>
 
 </manifest>
